@@ -1,8 +1,7 @@
-v0.19.0:
-  date: 2014-08-26
+v0.19.0-pre:
+  date: ----------
   changes:
     - Bump dependencies.
-    - Bump stylus to 0.48.
 v0.18.0:
   date: 2014-07-02
   changes:
