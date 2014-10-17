@@ -9,11 +9,8 @@
 'use strict';
 
 module.exports = function(grunt) {
-  var async = require('async');
-  var _ = require('lodash');
-
   grunt.registerMultiTask('stylus', 'Compile Stylus files into CSS', function() {
-     var done = this.async();
+    var done = this.async();
     var path = require('path');
     var chalk = require('chalk');
 
@@ -28,7 +25,7 @@ module.exports = function(grunt) {
       grunt.fail.warn('Experimental destination wildcards are no longer supported. Please refer to README.');
     }
 
-    async.forEachSeries(this.files, function(f, n) {
+    grunt.util.async.forEachSeries(this.files, function(f, n) {
       var destFile = path.normalize(f.dest);
       var srcFiles = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
@@ -46,7 +43,7 @@ module.exports = function(grunt) {
       }
 
       var compiled = [];
-      async.concatSeries(srcFiles, function(file, next) {
+      grunt.util.async.concatSeries(srcFiles, function(file, next) {
         compileStylus(file, options, function(css, err) {
           if (!err) {
             compiled.push(css);
@@ -68,7 +65,7 @@ module.exports = function(grunt) {
   });
 
   var compileStylus = function(srcFile, options, callback) {
-    options = _.extend({filename: srcFile}, options);
+    options = grunt.util._.extend({filename: srcFile}, options);
 
     // Never compress output in debug mode
     if (grunt.option('debug')) {
@@ -81,7 +78,7 @@ module.exports = function(grunt) {
 
     if ( options.rawDefine ) {
       // convert string option to an array with single value.
-      if ( _.isString( options.rawDefine ) ) {
+      if ( grunt.util._.isString( options.rawDefine ) ) {
         options.rawDefine = [options.rawDefine];
       }
     }
@@ -89,15 +86,15 @@ module.exports = function(grunt) {
     function shouldUseRawDefine(key) {
       if( options.rawDefine === true ) {
         return true;
-      } else if ( _.isArray( options.rawDefine ) ) {
-        return _.contains(options.rawDefine, key);
+      } else if ( grunt.util._.isArray( options.rawDefine ) ) {
+        return grunt.util._.contains(options.rawDefine, key);
       } else {
         return false;
       }
     }
 
 
-    _.each(options, function(value, key) {
+    grunt.util._.each(options, function(value, key) {
       if (key === 'urlfunc') {
         // Custom name of function for embedding images as Data URI
         if (typeof value === 'string') {
