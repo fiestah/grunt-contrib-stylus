@@ -10,11 +10,9 @@
 
 module.exports = function(grunt) {
 
-  function testPlugin(param) {
-    param = param || 'nope';
-
+  function testPlugin() {
     return function(style){
-      style.define('test-plugin', param);
+      style.define('test-plugin', 'yep');
     };
   }
 
@@ -70,10 +68,7 @@ module.exports = function(grunt) {
         },
         options: {
           use: [
-            testPlugin,
-            function () {
-              return testPlugin('yep');
-            }
+            testPlugin
           ]
         }
       },
