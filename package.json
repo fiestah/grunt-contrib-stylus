@@ -1,5 +1,5 @@
 {
-  "name": "grunt-contrib-stylus",
+  "name": "grunt-contrib-stylus-old",
   "description": "Compile Stylus files to CSS.",
   "version": "0.12.0",
   "homepage": "https://github.com/gruntjs/grunt-contrib-stylus",
