@@ -9,7 +9,7 @@
 'use strict';
 
 module.exports = function(grunt) {
-  grunt.registerMultiTask('stylus', 'Compile Stylus files into CSS', function() {
+  grunt.registerMultiTask('stylus-old', 'Compile Stylus files into CSS', function() {
     var done = this.async();
     var path = require('path');
 
