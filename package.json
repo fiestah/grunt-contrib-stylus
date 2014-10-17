@@ -28,7 +28,7 @@
     "LICENSE-MIT"
   ],
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt jshint test"
   },
   "dependencies": {
     "stylus": "~0.47.1",
