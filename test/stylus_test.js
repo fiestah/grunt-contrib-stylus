@@ -65,19 +65,11 @@ exports.stylus = {
   embedurl: function(test) {
     'use strict';
 
-    test.expect(3);
+    test.expect(1);
 
     var actual = readFile('tmp/embedurl.css');
     var expected = readFile('test/expected/embedurl/embedurl.css');
     test.equal(expected, actual, '`embedurl` mixin should embed image as Data URI');
-
-    var actual2 = readFile('tmp/embedurlObj.css');
-    var expected2 = readFile('test/expected/embedurl/embedurl.css');
-    test.equal(actual2, expected2, '`embedurl` mixin should embed image as Data URI');
-
-    var actual3 = readFile('tmp/embedurlOpts.css');
-    var expected3 = readFile('test/expected/embedurl/embedurlOpts.css');
-    test.equal(actual3, expected3, '`embedurlOpts` limit should prevent Data URI embed');
 
     test.done();
   },
@@ -122,17 +114,6 @@ exports.stylus = {
     var actual = readFile('tmp/banner.css');
     var expected = readFile('test/expected/banner/banner.css');
     test.equal(expected, actual, 'should prefix with baner');
-
-    test.done();
-  },
-  resolveUrl: function(test) {
-    'use strict';
-
-    test.expect(1);
-
-    var actual = readFile('tmp/resolveUrl.css');
-    var expected = readFile('test/expected/resolveUrl/resolveUrl.css');
-    test.equal(expected, actual, 'should resolve import urls');
 
     test.done();
   }
